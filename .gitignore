@@ -64,3 +64,5 @@ docs/_build/
 
 # Project specific
 settings.py
+
+.DS_Store
