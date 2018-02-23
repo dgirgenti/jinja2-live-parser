@@ -3,6 +3,8 @@
 <head>
     <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lodash.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nunjucks.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/convert.js') }}"></script>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
@@ -12,17 +14,14 @@
 
 <body>
     <form class="container">
+        <h1>Jinja live parser</h1>
         <div class="row">
-            <div class="col-md-5">
-                <h1>Template</h1>
+            <div class="col-md-10">
+                <h2>Template</h2>
                 <textarea id="template">{% include 'example_template.html' %}</textarea>
             </div>
-            <div class="col-md-5">
-                <h1>Render</h1>
-                <div id="render"></div>
-            </div>
             <div class="col-md-2">
-                <h1>Settings</h1>
+                <h2>Settings</h2>
                 <div id="settings">
                     <label><input type="checkbox" name="showwhitespaces" checked="checked" /> Show whitespaces</label><br/>
                     <label><input type="checkbox" name="dummyvalues" /> Use dummy values</label>
@@ -35,12 +34,24 @@
         </div>
 
         <div class="row">
+            <div class="col-md-6">
+                <h2>Jinja</h2>
+                <div id="jinja">Nothing here yet!</div>
+            </div>
+
+            <div class="col-md-6">
+                <h2>Nunjucks</h2>
+                <div id="nunjucks">Nothing here yet!</div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-5">
-                <h1>Values</h1>
+                <h2>Values</h2>
                 <textarea id="values">{% include 'example_values.html' %}</textarea>
             </div>
             <div class="col-md-7">
-                <h1>Custom Filters</h1>
+                <h2>Custom Filters</h2>
                 <ul>
                 {% for f_name, f_func in custom_filters.items() %}
                     <li>{{ f_name }}: {{ f_func.func_doc }}</li>

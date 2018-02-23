@@ -1,14 +1,16 @@
 #template,
-#render,
+#jinja,
+#nunjucks,
 #values {
     width: 100%;
-    min-height: 300px;
+    min-height: 150px;
     resize: vertical;
     font-family: "Courier New", Courier, monospace;
     border: 1px solid #ccc;
 }
 
-#render {
+#jinja,
+#nunjucks {
     background: #eee;
 }
 

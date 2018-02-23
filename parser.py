@@ -20,9 +20,8 @@ def get_custom_filters():
     import filters
     custom_filters = {}
     for m in getmembers(filters):
-        if m[0].startswith('filter_') and isfunction(m[1]):
-            filter_name = m[0][7:]
-            custom_filters[filter_name] = m[1]
+        if isfunction(m[1]) and '__' not in m[0] and m[0] != 'contextfunction':
+            custom_filters[m[0]] = m[1]
 
     return custom_filters
 
@@ -39,7 +38,7 @@ def convert():
     # Load custom filters
     custom_filters = get_custom_filters()
     app.logger.debug('Add the following customer filters to Jinja environment: %s' % ', '.join(custom_filters.keys()))
-    jinja2_env.filters.update(custom_filters)
+    jinja2_env.globals.update(custom_filters)
 
     # Load the template
     try:
@@ -47,10 +46,8 @@ def convert():
     except (exceptions.TemplateSyntaxError, exceptions.TemplateError) as e:
         return "Syntax error in jinja2 template: {0}".format(e)
 
+    dummy_values = ['Lorem', 'Ipsum', 'Amet', 'Elit', 'Expositum', 'Dissimile', 'Superiori', 'Laboro', 'Torquate', 'sunt']
 
-    dummy_values = [ 'Lorem', 'Ipsum', 'Amet', 'Elit', 'Expositum',
-        'Dissimile', 'Superiori', 'Laboro', 'Torquate', 'sunt',
-    ]
     values = {}
     if bool(int(request.form['dummyvalues'])):
         # List template variables (introspection)
@@ -90,7 +87,7 @@ def convert():
 if __name__ == "__main__":
     # Set up logging
     app.logger.setLevel(logging.__getattribute__(config.LOGGING_LEVEL))
-    file_handler = logging.handlers.RotatingFileHandler(filename=config.LOGGING_LOCATION, maxBytes=10*1024*1024, backupCount=5)
+    file_handler = logging.handlers.RotatingFileHandler(filename=config.LOGGING_LOCATION, maxBytes=(10 * 1024 * 1024), backupCount=5)
     file_handler.setFormatter(logging.Formatter(config.LOGGING_FORMAT))
     file_handler.setLevel(logging.__getattribute__(config.LOGGING_LEVEL))
     app.logger.addHandler(file_handler)
