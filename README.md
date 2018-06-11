@@ -1,36 +1,40 @@
-# Jinja2 live parser
+# Jinja2 & Nunjucks sandbox
 
-A lightweight live parser for [Jinja2](http://jinja.pocoo.org/docs/dev/) based on [Flask](http://flask.pocoo.org/) and [Jquery](http://jquery.com/).  
-All you need is Python and preferably [pip](https://pypi.python.org/pypi/pip). Can parse JSON and YAML inputs.
+_(forked from [qn7o/jinja2-live-parser](https://github.com/qn7o/jinja2-live-parser))_
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+A lightweight sandbox for [Jinja2](http://jinja.pocoo.org/docs/dev/) and [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) to test that your templates & filters are compliant with both syntaxes. All you need is Python, [pip](https://pypi.python.org/pypi/pip), and a web browser. Developed with Python 2.7 (I have not verified Python 3 support). Can parse JSON and YAML inputs.
+
+## TODOs
+
+* virtualenv so you're not `pip install`ing everything globally lol
+* pull js filters out of `convert.js`
+* Node/NPM + Webpack instead of barebones js/jquery
+* pull more js/py filters from existing repos
+* live updating on change of template textarea
 
 ## Install
 
 ### Clone + pip
 
-    $ git clone git@github.com:abourguignon/jinja2-live-parser.git
-    $ pip install -r requirements.txt
+    $ git clone git@github.com:dgirgenti/jinja2-nunjucks-sandbox.git
+    $ cd jinja2-nunjucks-sandbox
+    $ pip install -r requirements.txt  # TODO: don't install globally, sorry
     $ python parser.py
 
-### Dockerfile
+### Dockerfile (I personally have not verified this yet)
 
 Build it:
 
     docker build -t mydocker/j2parser .
     docker run -d -p 5000:5000 mydocker/j2parser
 
-Or simply pull it from registry (without building):
-
-    docker run -d -p 5000:5000 sahilsk/j2parser
-
 
 ## Usage
 
 You are all set, go to `http://localhost:5000/` and have fun.  
-You can add any custom filter you'd like in `filters.py`.  Just make sure the function's name starts with `filter_`.
+You can add any custom filter you'd like in `filters.py` and `convert.js` (for now).
 
 
 ## Preview
 
-![preview](http://i.imgur.com/T65xjAf.png)
+![preview](https://i.imgur.com/uR0Yswg.png)

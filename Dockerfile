@@ -8,7 +8,7 @@
 # Pull base image.
 FROM python:2.7
 
-RUN git clone https://github.com/qn7o/jinja2-live-parser.git /data
+RUN git clone https://github.com/dgirgenti/jinja2-nunjucks-sandbox.git /data
 
 WORKDIR /data
 
