@@ -2,7 +2,7 @@
 
 _(forked from [qn7o/jinja2-live-parser](https://github.com/qn7o/jinja2-live-parser))_
 
-A lightweight sandbox for [Jinja2](http://jinja.pocoo.org/docs/dev/) and [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) to test that your templates & filters are compliant with both syntaxes. All you need is Python, [pip](https://pypi.python.org/pypi/pip), and a web browser. Developed with Python 2.7 (I have not verified Python 3 support). Can parse JSON and YAML inputs.
+A lightweight sandbox for [Jinja2](http://jinja.pocoo.org/docs/dev/) and [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) to test that your templates & filters are compliant with both syntaxes. All you need is Python, [pip](https://pypi.python.org/pypi/pip), and a web browser. Developed with Python 2.7 and verified through Python 3.6.5. Can parse JSON and YAML inputs.
 
 ## TODOs
 
