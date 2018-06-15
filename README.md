@@ -6,22 +6,20 @@ A lightweight sandbox for [Jinja2](http://jinja.pocoo.org/docs/dev/) and [Nunjuc
 
 ## TODOs
 
-* virtualenv so you're not `pip install`ing everything globally lol
 * pull js filters out of `convert.js`
 * Node/NPM + Webpack instead of barebones js/jquery
 * pull more js/py filters from existing repos
 * live updating on change of template textarea
 
-## Install
-
-### Clone + pip
+## Get up and running
 
     $ git clone git@github.com:dgirgenti/jinja2-nunjucks-sandbox.git
     $ cd jinja2-nunjucks-sandbox
-    $ pip install -r requirements.txt  # TODO: don't install globally, sorry
-    $ python parser.py
+    $ ./go
 
-### Dockerfile (I personally have not verified this yet)
+That's it! Go to `http://localhost:5000`
+
+### Dockerfile (I personally have not verified this!)
 
 Build it:
 
@@ -31,7 +29,7 @@ Build it:
 
 ## Usage
 
-You are all set, go to `http://localhost:5000/` and have fun.  
+Go to `http://localhost:5000/` and have fun.
 You can add any custom filter you'd like in `filters.py` and `convert.js` (for now).
 
 
