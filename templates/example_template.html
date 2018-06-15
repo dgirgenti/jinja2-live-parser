@@ -1,7 +1,17 @@
 {% raw %}
 Hello {{name}}!
-
 {% if test -%}
     How are you?
 {%- endif %}
+
+test.length: {{ test.length }}
+test|length: {{ test|length }}
+
+{% for key, value in test.items() %}
+    {{ key }}: {{ value }}
+{% endfor %}
+
+{% for elem in arr %}
+    {{ elem }}
+{% endfor %}
 {% endraw %}
