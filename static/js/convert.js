@@ -39,7 +39,13 @@ $(document).ready(function(){
             return _.get(this.ctx, path, defaultValue);
         });
 
-        let nunjucksStr = nunjucksEnv.renderString(templateVal, JSON.parse(varsVal)).replace(/\n/g, '<br/>');
+        let nunjucksStr = '';
+        try {
+            nunjucksStr = nunjucksEnv.renderString(templateVal, JSON.parse(varsVal)).replace(/\n/g, '<br/>');
+        } catch(err) {
+            console.error(err);
+            nunjucksStr = 'Nunjucks encountered an error!\n\n' + err.toString();
+        }
         if (showWhitespace) {
             nunjucksStr = nunjucksStr.replace(/ /g, '<span class="whitespace">•</span>');
         }
